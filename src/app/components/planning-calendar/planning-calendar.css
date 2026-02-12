@@ -1,0 +1,257 @@
+/* ── Wrapper ─────────────────────────────────────────────────── */
+.planning-wrapper {
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  max-width: 70%;
+  margin: 50px auto;
+}
+
+/* ── Barre formulaire ────────────────────────────────────────── */
+.form-bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 16px;
+  background: #1e293b;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #334155;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.form-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.form-control {
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 6px;
+  border: 1.5px solid #334155;
+  background: #0f172a;
+  color: #f1f5f9;
+  font-size: 12px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.form-control:focus {
+  border-color: #2563eb;
+}
+
+/* Flèche du select en blanc */
+select.form-control {
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+/* Date picker sombre */
+input[type='date'].form-control::-webkit-calendar-picker-indicator {
+  filter: invert(0.6);
+  cursor: pointer;
+}
+
+.btn-add {
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 6px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.btn-add:hover {
+  background: #1d4ed8;
+}
+
+/* ── Message d'erreur ────────────────────────────────────────── */
+.form-error {
+  margin: 0;
+  padding: 6px 16px;
+  background: rgba(220, 38, 38, 0.1);
+  border-left: 3px solid #dc2626;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ── Légende ─────────────────────────────────────────────────── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 10px 14px;
+  background: #0f172a;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #cbd5e1;
+  white-space: nowrap;
+}
+
+/* ── FullCalendar overrides ──────────────────────────────────── */
+
+:host ::ng-deep .fc {
+  background: #ffffff;
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.1);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  font-size: 11px;
+}
+
+:host ::ng-deep .fc-toolbar {
+  background: #1e293b;
+  padding: 8px 14px;
+  margin: 0 !important;
+}
+
+:host ::ng-deep .fc-toolbar-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.01em;
+}
+
+:host ::ng-deep .fc-button {
+  background: #334155 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  color: #94a3b8 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 3px 9px !important;
+  line-height: 1.4 !important;
+  transition: background 0.15s !important;
+}
+
+:host ::ng-deep .fc-button:hover {
+  background: #475569 !important;
+  color: #f1f5f9 !important;
+}
+
+:host ::ng-deep .fc-col-header {
+  background: #1e293b;
+}
+
+:host ::ng-deep .fc-col-header-cell-cushion {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #475569;
+  text-decoration: none;
+  padding: 6px 0;
+  display: block;
+  text-align: center;
+}
+
+:host ::ng-deep .fc-daygrid-day {
+  background: #ffffff;
+}
+:host ::ng-deep .fc-daygrid-day.fc-day-other {
+  background: #f8fafc;
+}
+:host ::ng-deep .fc-daygrid-day.fc-day-today {
+  background: #eff6ff !important;
+}
+
+:host ::ng-deep .fc-daygrid-day-frame {
+  min-height: 64px !important;
+}
+
+:host ::ng-deep .fc-daygrid-day-number {
+  font-size: 11px;
+  font-weight: 600;
+  color: #334155;
+  text-decoration: none;
+  padding: 3px 5px;
+  line-height: 1;
+}
+
+:host ::ng-deep .fc-day-today .fc-daygrid-day-number {
+  background: #2563eb;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px;
+  padding: 0;
+}
+
+:host ::ng-deep .fc-day-other .fc-daygrid-day-number {
+  color: #cbd5e1;
+}
+
+:host ::ng-deep .fc-daygrid-event {
+  border-radius: 4px !important;
+  border: none !important;
+  margin: 1px 3px !important;
+  padding: 1px 5px !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  cursor: default !important;
+  line-height: 1.6 !important;
+}
+
+:host ::ng-deep .fc-daygrid-event:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+:host ::ng-deep .fc-event-title {
+  font-size: 10px;
+  font-weight: 600;
+}
+
+:host ::ng-deep td.fc-daygrid-day {
+  border-color: #e2e8f0 !important;
+}
+:host ::ng-deep .fc-scrollgrid {
+  border-color: #e2e8f0 !important;
+}
+:host ::ng-deep .fc-scroller {
+  overflow: hidden !important;
+}

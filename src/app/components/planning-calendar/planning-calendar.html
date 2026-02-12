@@ -1,0 +1,66 @@
+<div class="planning-wrapper">
+
+  <!-- ── Barre génération range ───────────────────────────── -->
+  <div class="form-bar">
+
+    <div class="form-group">
+      <label class="form-label">Année début</label>
+      <input class="form-control" type="number" [(ngModel)]="rangeForm.anneeDebut" name="anneeDebut" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mois début</label>
+      <input class="form-control" type="number" min="1" max="12" [(ngModel)]="rangeForm.moisDebut" name="moisDebut" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Année fin</label>
+      <input class="form-control" type="number" [(ngModel)]="rangeForm.anneeFin" name="anneeFin" />
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mois fin</label>
+      <input class="form-control" type="number" min="1" max="12" [(ngModel)]="rangeForm.moisFin" name="moisFin" />
+    </div>
+
+    <div class="form-group" style="display:flex; align-items:center; gap:8px;">
+      <input type="checkbox" [(ngModel)]="rangeForm.overwrite" name="overwrite" />
+      <span style="font-size:12px;">Overwrite</span>
+    </div>
+
+    <button class="btn-add" (click)="genererRange()" [disabled]="loading">
+      {{ loading ? 'Génération...' : 'Générer' }}
+    </button>
+
+  </div>
+
+  <p class="form-error" *ngIf="formError">{{ formError }}</p>
+
+  <!-- ── Dropdown mois générés ─────────────────────────────── -->
+  <div class="form-bar" *ngIf="generatedPlannings.length" style="margin-top:10px;">
+    <div class="form-group" style="min-width:240px;">
+      <label class="form-label">Mois généré</label>
+      <select class="form-control" [(ngModel)]="selectedPeriodeId" name="selectedPeriodeId" (change)="onSelectGeneratedMonth()">
+        <option *ngFor="let p of generatedPlannings" [ngValue]="p.periodeId">
+          {{ periodeLabel(p) }}
+        </option>
+      </select>
+    </div>
+
+    <button class="btn-add" (click)="loadPlanningFromApi(currentYear, currentMonth)" [disabled]="loading">
+      Recharger
+    </button>
+  </div>
+
+  <!-- ── Légende groupes ────────────────────────────────────── -->
+  <div class="legend" *ngIf="groupes.length">
+    <div class="legend-item" *ngFor="let g of groupes">
+      <span class="legend-dot" [style.background]="colorByGroupeCode.get(g.code)"></span>
+      <span class="legend-name">{{ g.libelle }}</span>
+    </div>
+  </div>
+
+  <!-- ── Calendrier ─────────────────────────────────────────── -->
+  <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+
+</div>
